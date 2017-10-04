@@ -1,26 +1,11 @@
-package com.ajay.tree.DFS;
-
-/**
- * Created by ajayk297 on 29/09/17.
- */
-class Node {
-    int key;
-    Node left, right;
-
-    Node(int key) {
-        this.key = key;
-        left = right = null;
-
-    }
-}
+package com.ajay.tree;
 
 /**
  * DFS various traversal strategies.
  */
-class BinaryTree {
-    Node root;
+class DFSBinaryTree extends AbstractTree {
 
-    BinaryTree() {
+    DFSBinaryTree(){
         root = null;
     }
 
@@ -28,7 +13,7 @@ class BinaryTree {
 
         if (root == null) return;
         printInorderTraversal(root.left);
-        System.out.println(root.key + " ");
+        System.out.println(root.data + " ");
         printInorderTraversal(root.right);
 
     }
@@ -36,7 +21,7 @@ class BinaryTree {
     public void printPreorderTraversal(Node root){
 
         if (root == null) return;
-        System.out.println(root.key + " ");
+        System.out.println(root.data + " ");
         printPreorderTraversal(root.left);
         printPreorderTraversal(root.right);
     }
@@ -46,14 +31,14 @@ class BinaryTree {
         if (root == null) return;
         printPostorderTraversal(root.left);
         printPostorderTraversal(root.right);
-        System.out.println(root.key + " ");
+        System.out.println(root.data + " ");
     }
 }
 
 public class DFSTraversals {
 
     public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
+        DFSBinaryTree tree = new DFSBinaryTree();
 
         tree.root = new Node(1);
 
