@@ -7,7 +7,6 @@ import java.util.Queue;
  * Created by ajayk297 on 04/10/17.
  */
 
-
 class BFSBinaryTree extends AbstractTree{
 
     BFSBinaryTree(){
@@ -33,7 +32,7 @@ class BFSBinaryTree extends AbstractTree{
 
     }
 }
-
+//time complexity here is O(n)
 public class BFSTraversal {
 
     public static void main(String[] args) {
