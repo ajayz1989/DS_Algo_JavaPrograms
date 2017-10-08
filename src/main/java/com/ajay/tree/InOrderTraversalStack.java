@@ -40,6 +40,7 @@ class BinaryTree extends AbstractTree{
     }
 }
 
+//Time complexity here is O(n)
 public class InOrderTraversalStack {
 
     public static void main(String[] args) {
