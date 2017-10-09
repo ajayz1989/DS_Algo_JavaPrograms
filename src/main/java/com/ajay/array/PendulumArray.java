@@ -1,4 +1,4 @@
-package com.ajay.array.pendulum;
+package com.ajay.array;
 
 /**
  * Created by ajayk297 on 15/09/17.
