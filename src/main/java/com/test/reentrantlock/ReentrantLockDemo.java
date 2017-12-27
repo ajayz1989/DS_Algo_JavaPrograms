@@ -1,5 +1,7 @@
 package com.test.reentrantlock;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -10,30 +12,53 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ReentrantLockDemo {
 
     private Lock lock = new ReentrantLock(true);
-    private int counter = 0;
+    private static int counter = 0;
+
+
+    private void increment() {
+        for (int i = 0; i < 10000; i++) {
+            counter++;
+        }
+    }
 
     //lock using reentrant lock
-    private int getCounter(){
+    private void firstThread() {
+        lock.lock();
+        increment();
+        lock.unlock();
+    }
 
-        try {
-            if (lock.tryLock(10, TimeUnit.SECONDS)) {
-                System.out.println(Thread.currentThread().getName() + " get count-" + counter);
-                counter++;
+    //lock using reentrant lock
+    private void secondThread() {
+        lock.lock();
+        increment();
+        lock.unlock();
+    }
+
+    public static void main(String arg[]) throws InterruptedException {
+        ReentrantLockDemo demo = new ReentrantLockDemo();
+
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                demo.firstThread();
             }
-        }catch (InterruptedException e){
-            System.out.println(e);
-        }
-        finally {
-            lock.unlock();
-        }
-        return counter;
-    }
+        });
 
-    private synchronized int getSynchronizedCount(){
-        return counter++;
-    }
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                demo.secondThread();
+            }
+        });
 
-    public static void main(String arg[]){
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+
+
+        System.out.println(Thread.currentThread().getName() + " get count-" + counter);
 
     }
 
