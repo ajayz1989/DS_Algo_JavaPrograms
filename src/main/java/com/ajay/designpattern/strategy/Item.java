@@ -1,6 +1,6 @@
 package com.ajay.designpattern.strategy;
 
-public class Item {
+public class Item{
 
     private String itemName;
     private int cost;
