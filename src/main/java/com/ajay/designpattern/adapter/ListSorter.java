@@ -9,14 +9,14 @@ import java.util.List;
  */
 public class ListSorter<T> {
 
-    private List<T> list;
+	private List<T> list;
 
-    public ListSorter() {
-        this.list = new ArrayList<>();
-    }
+	public ListSorter() {
+		this.list = new ArrayList();
+	}
 
-    public List<T> getSortedList(List list){
-        Collections.sort(list);
-        return list;
-    }
+	public List<T> getSortedList(List list) {
+		Collections.sort(list);
+		return list;
+	}
 }

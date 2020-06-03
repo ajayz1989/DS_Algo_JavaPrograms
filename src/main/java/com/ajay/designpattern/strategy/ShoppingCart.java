@@ -8,7 +8,7 @@ public class ShoppingCart {
     private List<Item> itemList;
 
     public ShoppingCart() {
-        this.itemList = new ArrayList<>();
+        this.itemList = new ArrayList();
     }
 
     public void addItem(Item item){
